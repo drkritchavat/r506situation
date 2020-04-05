@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        h1 {
+            color: green;
+            font-size: 26px;
+            font-family: Tahoma;
+        }
+        h2 {
+            font-size: 18px;
+            font-family: Tahoma;
+            font-weight: bold;
+        }
+    </style>
+    <title>Pneumonia</title>
+</head>
+
+<body>
+    <div class='container'>
+        <div class='row'>
+            <p1><br></p1>
+        </div>
+        <div class='row'>
+            <h1> สถานการณ์โรคปอดอักเสบ ประเทศไทย พ.ศ. 2563 <br>
+                ประจำสัปดาห์ที่ {cweek} ระหว่างวันที่ {dstart} - {dstop} </h1>
+        </div>
+        <div class='row'>
+            <p1><br></p1>
+        </div>
+        <div class='row'>
+            <div class="col-8"></div>
+            <div class="col-4">
+                <h2>
+                    <p style="text-align:right";>กองระบาดวิทยา กรมควบคุมโรค<br></style>
+                </div></h2>
+                
+        </div>
+        <div class='row'>
+            <p1><br></p1>
+        </div>
+        <div class='row'>
+            <div class="col-12">
+   
+                ตั้งแต่ 1 มกราคม 2563 – {dstop} จากรายงาน 506 พบผู้ป่วย {totalcase} ราย คิดเป็นอัตราป่วย {totalrate}
+                ต่อประชากรแสนคน พบผู้เสียชีวิต {totaldeath} ราย สำหรับจำนวนผู้ป่วยโรคปอดอักเสบใน 4 สัปดาห์ล่าสุดนั้น
+                มีแนวโน้ม{trend} และมีจำนวนผู้ป่วย{withmedian}มัธยฐานของจำนวนผู้ป่วยระหว่างปี พ.ศ. 2557 - 2562
+  
+            </div>
+        </div>
+        <div class='row'>
+            <p1><br></p1>
+        </div>
+        <div class='row'>
+            <div class="col-12">{trendline}</div>
+        </div>
+        <div class='row'>
+            <p1><br></p1>
+        </div>
+        <div class='row'>
+            <div class="col-12">
+                จังหวัดที่มีอัตราป่วยสูงที่สุด 10 อันดับแรก ได้แก่ {provinces}
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-12">{map}</div>
+        </div>
+        <div class='row'>
+            <div class="col-12">
+                
+                <h2>อัตราป่วยโรคปอดอักเสบ รายจังหวัด พ.ศ. 2563 ต่อสัปดาห์</h2></div>
+        </div>
+        <div class='row'>
+            <div class="col-6">
+                ภาคเหนือ
+                {go_n}
+            </div>
+            <div class="col-6">
+                ภาคตะวันออกเฉียงเหนือ
+                {go_ne}
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-6">
+                ภาคกลาง
+                {go_c}
+            </div>
+            <div class="col-6">
+                ภาคใต้
+                {go_s}
+            </div>
+        </div>
+        <div class='row'>
+            <p1><br></p1>
+        </div>
+        <div class='row'>
+            <div class="col-12">
+                <h2>อัตราป่วยโรคปอดอักเสบ แยกรายกลุ่มอายุ<br></h2>
+            </div>
+        </div>
+        <div class='row'>
+            <div class="col-12">
+                กลุ่มอายุที่มีอัตราป่วยสูงที่สุด ได้แก่ <br>
+                {agegrhtml}<br>
+                {agegrplot}
+            </div>
+        </div>
+        <div class='row'>
+            <p1><br></p1>
+        </div>
+    </div>
+</body>
+
+</html>

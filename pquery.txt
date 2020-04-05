@@ -1,0 +1,28 @@
+SElECT 
+    SEX,
+    YEAR,
+    RACE,
+    RACE1,
+    OCCUPAT,
+    ADDRCODE,
+    PROVINCE,
+    METROPOL,
+    TYPE,
+    RESULT,
+    DATESICK, 
+    COUNT(*) AS CASES 
+FROM
+    {ds}{y} 
+{WHERE}
+GROUP BY
+    SEX,
+    YEAR,
+    RACE,
+    RACE1,
+    OCCUPAT,
+    ADDRCODE,
+    PROVINCE,
+    METROPOL,
+    TYPE,
+    RESULT,
+    DATESICK
