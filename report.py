@@ -13,6 +13,8 @@ from functools import reduce
 import sys
 from thai_strftime import thai_strftime
 from bs4 import BeautifulSoup
+from modules import casebyprov,plotweek,go_to_div
+
 ds = sys.argv[1]
 lastdate = sys.argv[2]
 dlast = lastdate
@@ -22,23 +24,6 @@ with open('pquery.txt','r') as f:
 pquery = pquery.replace('{ds}',ds)
 with open('popquery.txt','r') as f:
     popquery = f.read()
-
-def casebyprov(prov,dfwithmedian):
-    nationmedian = dfwithmedian.loc[prov]
-    nationmedian.index = nationmedian.index.astype('int')
-    return nationmedian
-def plotweek(nationmedian,visible):
-    fig = [
-        go.Scatter(x=nationmedian.index,y=nationmedian[2019],name='2019',marker_color='green',visible=visible),
-        go.Scatter(x=nationmedian.index,y=nationmedian['median'],name='median',marker_color='red',visible=visible),
-        go.Bar(x=nationmedian.index,y=nationmedian[2020],name='2020',marker_color='blue',visible=visible)
-    ]
-    return fig
-def go_to_div(fig):
-    div = plotly.offline.plot(fig,
-                      include_plotlyjs=False,
-                      output_type='div')
-    return div
 
 if __name__ == "__main__":
     db = lambda y: mydb.create_engine('boe',f'd506{y}')
@@ -391,11 +376,17 @@ if __name__ == "__main__":
     pcodenorth = regions.query('region == "north"')['provcode']
     areamat = dfprov2020[dfprov2020.index.isin(pcodenorth)]
     areamat = areamat.merge(pop,left_index=True,right_on='provcode').set_index('provname').iloc[:,:-2]
-    go_n = go_to_div(go.Figure(go.Heatmap(z=areamat,
+    go_n = go_to_div(go.Figure(go.Heatmap(
+                                z=areamat,
                                 y=areamat.index,
                                 x=areamat.columns,
-                                colorscale='reds',zauto=False,zmax=zmax))\
-                    .update_layout(height=300,margin={"r":0,"t":0,"l":0,"b":0}))
+                                colorscale='reds',
+                                zauto=False,
+                                zmax=zmax))\
+                        .update_layout(
+                                    height=300,
+                                    margin={"r":0,"t":0,"l":0,"b":0})
+                    )
 
     """
     Northeast
