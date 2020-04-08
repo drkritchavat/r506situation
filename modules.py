@@ -1,6 +1,6 @@
 from plotly.subplots import make_subplots
 import plotly
-import ployly.graph_objects as go
+import plotly.graph_objects as go
 
 def casebyprov(prov,dfwithmedian):
     nationmedian = dfwithmedian.loc[prov]
